@@ -5,6 +5,8 @@ from lettings.models import Letting
 # Sed non placerat massa. Integer est nunc, pulvinar a tempor et, bibendum id arcu.
 # Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
 # Cras eget scelerisque
+
+
 def lettings_index(request):
     lettings_list = Letting.objects.all()
     context = {"lettings_list": lettings_list}
@@ -24,6 +26,8 @@ def lettings_index(request):
 # Vivamus consequat aliquam libero, eget bibendum lorem. Sed non dolor risus.
 # Mauris condimentum auctor elementum. Donec quis nisi ligula.
 # Integer vehicula tincidunt enim, ac lacinia augue pulvinar sit amet.
+
+
 def letting(request, letting_id):
     letting = Letting.objects.get(id=letting_id)
     context = {

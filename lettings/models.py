@@ -11,7 +11,7 @@ class Address(models.Model):
     country_iso_code = models.CharField(
         max_length=3, validators=[MinLengthValidator(3)]
     )
-    
+
     class Meta:
         verbose_name = "Address"
         verbose_name_plural = "Addresses"
@@ -23,7 +23,7 @@ class Address(models.Model):
 class Letting(models.Model):
     title = models.CharField(max_length=256)
     address = models.OneToOneField(Address, on_delete=models.CASCADE)
-    
+
     class Meta:
         verbose_name = "Letting"
         verbose_name_plural = "Lettings"

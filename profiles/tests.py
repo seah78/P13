@@ -12,7 +12,7 @@ class TestIndex(TestCase):
         response = client.get(reverse("profiles:profiles_index"))
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, '<title>Profiles</title>')
+        self.assertContains(response, "<title>Profiles</title>")
         self.assertTemplateUsed(response, "profiles/index.html")
 
     def test_context(self):
@@ -21,5 +21,5 @@ class TestIndex(TestCase):
         Profile.objects.create(user=wrong_user, favorite_city="Chocques")
 
         response = client.get(reverse("profiles:profile", kwargs={"username": "SEAH"}))
-        self.assertContains(response, '<title>SEAH</title>')
-        self.assertContains(response, '<p>Favorite city: Chocques</p>')
+        self.assertContains(response, "<title>SEAH</title>")
+        self.assertContains(response, "<p>Favorite city: Chocques</p>")
