@@ -1,13 +1,16 @@
 from django.shortcuts import render
-from .models import Letting, Profile
+from lettings.models import Letting
+from profiles.models import Profile
 
 
 # Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 # Quisque molestie quam lobortis leo consectetur ullamcorper non id est.
 # Praesent dictum, nulla eget feugiat sagittis, sem mi convallis eros,
-# vitae dapibus nisi lorem dapibus sem. Maecenas pharetra purus ipsum, eget consequat ipsum lobortis quis.
+# vitae dapibus nisi lorem dapibus sem. Maecenas pharetra purus ipsum,
+# eget consequat ipsum lobortis quis.
 # Phasellus eleifend ex auctor venenatis tempus.
-# Aliquam vitae erat ac orci placerat luctus. Nullam elementum urna nisi, pellentesque iaculis enim cursus in.
+# Aliquam vitae erat ac orci placerat luctus. Nullam elementum urna nisi,
+# pellentesque iaculis enim cursus in.
 # Praesent volutpat porttitor magna, non finibus neque cursus id.
 def index(request):
     return render(request, "index.html")
@@ -27,7 +30,8 @@ def lettings_index(request):
 # In accumsan porta nisl id eleifend.
 # Praesent dignissim, odio eu consequat pretium, purus urna vulputate arcu, vitae efficitur
 #  lacus justo nec purus. Aenean finibus faucibus lectus at porta.
-# Maecenas auctor, est ut luctus congue, dui enim mattis enim, ac condimentum velit libero in magna.
+# Maecenas auctor, est ut luctus congue, dui enim mattis enim,
+# ac condimentum velit libero in magna.
 # Suspendisse potenti. In tempus a nisi sed laoreet.
 # Suspendisse porta dui eget sem accumsan interdum.
 # Ut quis urna pellentesque justo mattis ullamcorper ac non tellus.
