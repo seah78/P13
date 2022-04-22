@@ -37,9 +37,24 @@ jobs:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
           command: pytest
-      - run:
-          name: Check PEP8
-          command: flake8
+      #- run:
+          #name: Check PEP8
+          #command: flake8
+    build-docker:
+      environment:
+        IMAGE_NAME: oc-lettings
+      docker:
+        - image: circleci/buildpack-deps:stretch
+      steps:
+        - checkout
+        - setup_remote_docker
+        - run:
+            name: Build Docker image
+            command: |
+              echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+              docker build -t "$CIRCLE_SHA1" .
+              docker tag "$CIRCLE_SHA1" "$DOCKER_USERNAME"/oc_lettings:"$CIRCLE_SHA1"
+              docker push "$DOCKER_USERNAME"/oc_lettings:"$CIRCLE_SHA1"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -48,3 +63,9 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
+      - build-docker:
+        requires:
+          - build-and-test
+        filters:
+          branches:
+            only: master
