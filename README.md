@@ -75,3 +75,48 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 - Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
 - Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+
+
+### Déploiement
+
+L'app est deployée en utilisant CircleCI, DockerHub et Heroku. 
+Le pipeline est lancé à chaque push du repo sur la branche master et réalise les étapes suivantes :
+
+- Construction et test
+- Creation du conteneur Docker
+- Déploiement sur Heroku 
+
+Vous aurez besoin de déclarer les variables d'environnement soit dans un fichier .env pour lancer
+l'application en local ou sur les plateformes de CircleCI ou Heroku pour un déploiement en ligne.
+
+Liste des variables d'environnements pour CircleCI :
+DEBUG
+DOCKER_PASSWORD
+DOCKER_USERNAME
+HEROKU_APP_NAME
+HEROKU_TOKEN
+SECRET_KEY 
+
+L'installation de Heroku en local est nécessaire pour le déploiement. (`https://devcenter.heroku.com/articles/getting-started-with-python#set-up`)
+
+Utilisez la commande `heroku login` depuis un terminal afin de vous identifier sur votre compte Heroku 
+Récupérez la variable d'environnement HEROKU_TOKEN, tapez la commande suivante : `heroku auth:token`
+
+
+Vous devrez également changer la clé privée de votre DNS Sentry par la vôtre, ainsi que la fin de
+l'adresse dans les settings du projet. Pensez également à changer le nom du domaine par celui de 
+votre choix dans les ALLOWED_HOSTS des settings et dans la configuration du pipeline (config.yml),
+lors de la dernière étape (heroku-deploy)
+
+
+Lien du pipeline actuel:
+
+https://app.circleci.com/pipelines/github/seah78/P13
+
+Lien vers le site sur Heroku:
+
+https://oc-lettings-site-seb.herokuapp.com/
+
+Lien du Sentry (Vous devez avoir un compte Sentry et demander l'autorisation)
+
+https://sentry.io/organizations/herlant/projects/oc-lettings-site-seb/?project=6358464&statsPeriod=14d
