@@ -95,7 +95,8 @@ DOCKER_PASSWORD
 DOCKER_USERNAME
 HEROKU_APP_NAME
 HEROKU_TOKEN
-SECRET_KEY 
+SECRET_KEY
+SENTRY 
 
 L'installation de Heroku en local est nécessaire pour le déploiement. (`https://devcenter.heroku.com/articles/getting-started-with-python#set-up`)
 
